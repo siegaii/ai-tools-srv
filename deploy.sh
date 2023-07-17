@@ -19,7 +19,7 @@ docker build -t $image_name .
 
 docker run -itd \
 -p 7001:7001 \
--e OPENAI_API_KEY=$OPENAI_API_KEY \
+-e OPENAI_ACCESS_TOKEN=$OPENAI_ACCESS_TOKEN \
 --name $image_name \
 $image_name
 
