@@ -21,11 +21,11 @@ jobs:
           port: ${{ secrets.PORT }}
           connect_timeout: 10s
           first_ssh: |
-            rm -rf /root/yfchat-srv/*
+            rm -rf /root/ai-tools-srv/*
           scp: |
-            './*' => /root/yfchat-srv/
+            './*' => /root/ai-tools-srv/
           last_ssh: |
             export OPENAI_API_KEY=$OPENAI_API_KEY
-            cd /root/yfchat-srv
+            cd /root/ai-tools-srv
             chmod +x deploy.sh
             ./deploy.sh

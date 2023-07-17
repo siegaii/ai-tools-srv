@@ -1,4 +1,4 @@
-image_name="yfchat-srv"
+image_name="ai-tools-srv"
 
 # 停止并删除 Docker 容器
 if docker ps -aq -f name=$image_name > /dev/null; then
