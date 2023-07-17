@@ -13,7 +13,8 @@ jobs:
       - name: Deploy
         uses: cross-the-world/ssh-scp-ssh-pipelines@master
         env:
-          OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
+          OPENAI_ACCESS_TOKEN: ${{ secrets.OPENAI_ACCESS_TOKEN }}
         with:
           host: ${{ secrets.HOST }}
           user: ${{ secrets.USERNAME }}
@@ -25,7 +26,7 @@ jobs:
           scp: |
             './*' => /root/ai-tools-srv/
           last_ssh: |
-            export OPENAI_API_KEY=$OPENAI_API_KEY
+            export OPENAI_ACCESS_TOKEN=$OPENAI_ACCESS_TOKEN
             cd /root/ai-tools-srv
             chmod +x deploy.sh
             ./deploy.sh
