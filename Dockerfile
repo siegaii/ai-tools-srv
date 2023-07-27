@@ -21,6 +21,6 @@ RUN npm install pnpm -g && pnpm install --prod
 # Set the NODE_ENV environment variable to 'production'
 ENV NODE_ENV=production
 
-EXPOSE 7001
+EXPOSE 7002
 
 CMD ["npm", "run", "prod"]
