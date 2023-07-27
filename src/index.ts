@@ -1,3 +1,5 @@
+import fs from 'fs'
+import https from 'https'
 import express from 'express'
 import type { RequestProps } from './types'
 import type { ChatMessage } from './chatgpt'
@@ -7,6 +9,11 @@ import { limiter } from './middleware/limiter'
 
 const app = express()
 const router = express.Router()
+
+const httpsOptions = {
+  key: fs.readFileSync('/etc/nginx/certs/privkey1.pem'),
+  cert: fs.readFileSync('/etc/nginx/certs/fullchain1.pem'),
+}
 
 app.use(express.static('public'))
 app.use(express.json())
@@ -58,4 +65,12 @@ app.use('', router)
 app.use('/api', router)
 app.set('trust proxy', 1)
 
-app.listen(7001, () => globalThis.console.log('Server is running on port 7001'))
+if (process.env.NODE_ENV === 'production') {
+  // Start HTTPS server
+  https.createServer(httpsOptions, app).listen(7002, () => {
+    globalThis.console.log('HTTPS Server running on port 7002')
+  })
+}
+else {
+  app.listen(7001, () => globalThis.console.log('Server is running on port 7001'))
+}
