@@ -11,8 +11,8 @@ const app = express()
 const router = express.Router()
 
 const httpsOptions = {
-  key: fs.readFileSync('/etc/nginx/certs/privkey1.pem'),
-  cert: fs.readFileSync('/etc/nginx/certs/fullchain1.pem'),
+  key: fs.readFileSync('/etc/ai-tools-srv/certs/live/siegaii.com/privkey.pem'),
+  cert: fs.readFileSync('/etc/ai-tools-srv/certs/live/siegaii.com/fullchain.pem'),
 }
 
 app.use(express.static('public'))

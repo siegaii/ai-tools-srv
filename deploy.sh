@@ -18,7 +18,7 @@ docker build -t $image_name .
 docker run -itd \
 -p 7002:7002 \
 -e OPENAI_ACCESS_TOKEN=$OPENAI_ACCESS_TOKEN \
--v /etc/letsencrypt/archive/siegaii.com:/etc/nginx/certs \
+-v /etc/letsencrypt:/etc/ai-tools-srv/certs \
 --name $image_name \
 $image_name
 
