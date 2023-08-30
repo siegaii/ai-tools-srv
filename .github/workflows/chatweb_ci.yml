@@ -1,8 +1,8 @@
 name: Publish And Deploy
 on:
   push:
-    tags:
-      - 'v*'
+    branches:
+      - 'main'  # 这里可以替换为你希望触发工作流程的分支名称
 
 jobs:
   build-and-deploy:
@@ -13,7 +13,6 @@ jobs:
       - name: Deploy
         uses: cross-the-world/ssh-scp-ssh-pipelines@master
         env:
-          # OPENAI_API_KEY: ${{ secrets.OPENAI_API_KEY }}
           OPENAI_ACCESS_TOKEN: ${{ secrets.OPENAI_ACCESS_TOKEN }}
         with:
           host: ${{ secrets.HOST }}
