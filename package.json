@@ -1,6 +1,6 @@
 {
   "name": "ai-tools-srv",
-  "version": "0.0.10",
+  "version": "0.0.11",
   "private": false,
   "description": "ChatGPT Web Service",
   "author": "siegaii <siiegaii@gmail.com>",
